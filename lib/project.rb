@@ -23,4 +23,17 @@ class Project
     @id = result.first.fetch("id").to_i
   end
 
+  def ==(another_project)
+    self.name == another_project.name
+  end
+
+  def self.find(id)
+    Project.all.each do |project|
+      if project.id == id
+        return project
+      end
+    end
+  end
+
+
 end
