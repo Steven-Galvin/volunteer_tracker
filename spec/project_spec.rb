@@ -41,7 +41,7 @@ describe(Project) do
     it("is the same project if it has the same name") do
       project1 = Project.new({:name => "Morrison Bridge", :description => "repair damage", :id => nil})
       project2 = Project.new({:name => "Morrison Bridge", :description => "repair damage", :id => nil})
-      expect(project1).to(eq(project2))
+      expect(project1 == project2).to(eq(true))
     end
   end
 
@@ -54,6 +54,5 @@ describe(Project) do
       expect(Project.find(test_project2.id)).to(eq(test_project2))
     end
   end
-
 
 end

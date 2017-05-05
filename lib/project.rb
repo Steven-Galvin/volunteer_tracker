@@ -20,7 +20,7 @@ class Project
 
   def save
     result = DB.exec("INSERT INTO projects (name) VALUES ('#{@name}') RETURNING id;")
-    @id = result.first.fetch("id").to_i
+    @id = result.first["id"].to_i
   end
 
   def ==(another_project)
@@ -34,6 +34,5 @@ class Project
       end
     end
   end
-
 
 end
