@@ -29,4 +29,19 @@ describe(Volunteer) do
     end
   end
 
+  describe("#save") do
+    it("adds a volunteer to the array of saved volunteers") do
+      test_volunteer = Volunteer.new({:name => "Steven Galvin", :id => nil, :project_id => 1})
+      test_volunteer.save
+      expect(Volunteer.all).to(eq([test_volunteer]))
+    end
+  end
+
+  describe("#id") do
+    it("sets the ID when you save it") do
+      test_volunteer = Volunteer.new({:name => "Steven Galvin", :id => nil, :project_id => 1})
+      test_volunteer.save()
+      expect(test_volunteer.id).to(be_an_instance_of(Fixnum))
+    end
+  end
 end
