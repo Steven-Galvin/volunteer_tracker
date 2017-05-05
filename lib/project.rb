@@ -35,6 +35,15 @@ class Project
     end
   end
 
+  def update (attributes)
+    @name = attributes.fetch(:name, @name)
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{self.id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id}")
+  end
+
   def volunteers
     project_volunteers = []
     volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
@@ -45,5 +54,16 @@ class Project
       project_volunteers.push(Volunteer.new({:name => name, :project_id => project_id}))
     end
     project_volunteers
+  end
+
+  def self.search_project (search)
+    searched_projects = []
+    projects = DB.exec("SELECT * FROM projects WHERE LOWER (name) LIKE LOWER('#{search}%');")
+    projects.each do |project|
+      name = project.fetch('name')
+      id = project.fetch('id').to_i
+      searched_projects.push(Project.new({:name => name, :id => id}))
+    end
+    searched_projects
   end
 end

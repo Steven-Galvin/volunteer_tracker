@@ -26,4 +26,24 @@ class Volunteer
      result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id}) RETURNING id;")
      @id = result.first['id'].to_i
   end
+
+  def update (attributes)
+    @name = attributes.fetch(:name, @name)
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{self.id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{self.id}")
+  end
+
+  def self.search_volunteer (search)
+    searched_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE LOWER (name) LIKE LOWER('#{search}%');")
+    volunteers.each do |volunteer|
+      name = volunteer.fetch('name')
+      id = volunteer.fetch('id').to_i
+      searched_volunteers.push(Volunteer.new({:name => name, :id => id}))
+    end
+    searched_volunteers
+  end
 end

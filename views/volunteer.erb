@@ -1,0 +1,13 @@
+<h1><%= @volunteer.name %></h1>
+
+<form action="/volunteers/<%= @volunteer.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label>Edit the project's title:</label>
+  <input type="text" name="edit-title">
+  <button type="submit">Submit</button>
+</form>
+<br>
+<form action="/delete/<%= @project.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete Project</button>
+</form>
