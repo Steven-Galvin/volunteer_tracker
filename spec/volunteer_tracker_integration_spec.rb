@@ -26,12 +26,22 @@ end
 describe("the update project path", {:type => :feature}) do
   it("update details of single project") do
     visit("/")
-    visit("/")
     fill_in("project_name", :with => "Morrison")
     click_button("Add Project")
     click_on("Morrison")
     fill_in("project_name", :with => "Lents")
     click_button("Update Project")
     expect(page).to have_content("Lents")
+  end
+end
+
+describe("the delete project path", {:type => :feature}) do
+  it("delete a project") do
+    visit("/")
+    fill_in("project_name", :with => "Morrison")
+    click_button("Add Project")
+    click_on("Morrison")
+    click_button("Delete Project")
+    expect(page).to have_content("Welcome to the Volunteer and Project Tracker.")
   end
 end
