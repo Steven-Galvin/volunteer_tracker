@@ -1,0 +1,12 @@
+<h3>Search Results:</h3>
+
+<% if @volunteers.any? %>
+<ul>
+<% @volunteers.each() do |volunteer| %>
+<li><a href="/volunteers/search/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+<% end %>
+<p>Click on a volunteer to see information about them:</p>
+</ul>
+<% else %>
+<p>There are no volunteers matching your search terms</p>
+<% end %>

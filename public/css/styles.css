@@ -20,3 +20,13 @@ input {
   color: rgb(226, 254, 255);
   text-align: center;
 }
+
+.well#nav_bar {
+  background-color: rgba(76, 76, 76, 0.9);
+  color: rgb(226, 254, 255);
+}
+
+.well#welcome {
+  background-color: rgba(76, 76, 76, 0.9);
+  color: rgb(226, 254, 255);
+}

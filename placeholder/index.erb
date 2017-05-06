@@ -1,8 +1,3 @@
-<div class="well" id="welcome">
-  <h4>Welcome to the Volunteer and Project Tracker.</h4>
-  <p>Below is a list of all projects registered. You can also add new projects or select existing ones to view their details.</p>
-</div>
-
 <form action="/" method="post">
   <label for="project_name">Project Name:</label>
   <input id="project_name" name="project_name" type="text" required>
@@ -12,11 +7,11 @@
 <h1>Your Current Projects</h1>
 
 <% if @projects.any? %>
-  <h3>Click on a project to see its details:</h3>
+  <h3>Click on a project to see its volunteers:</h3>
 
   <ul>
     <% @projects.each do |project| %>
-      <li><a href="/project/<%= project.id %>"><%= project.name %></a></li>
+      <li><a href="/projects/<%= project.id %>"><%= project.name %></a></li>
     <% end %>
   </ul>
 

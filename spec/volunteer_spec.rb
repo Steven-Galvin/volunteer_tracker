@@ -45,6 +45,16 @@ describe(Volunteer) do
     end
   end
 
+  describe(".find") do
+    it("returns a volunteer by its id") do
+      test_volunteer1 = Volunteer.new({:name => "Steven Galvin", :project_id => 1, :id => nil})
+      test_volunteer1.save()
+      test_volunteer2 = Volunteer.new({:name => "Arianna Chau", :project_id => 1, :id => nil})
+      test_volunteer2.save()
+      expect(Volunteer.find(test_volunteer2.id)).to(eq(test_volunteer2))
+    end
+  end
+
   describe('#update') do
     it('lets you change the name of a volunteer') do
       test_volunteer = Volunteer.new({:name => "Steven Gavin", :project_id => 1, :id => nil})
