@@ -12,3 +12,26 @@ describe("the volunteer & project tracker path", {:type => :feature}) do
     expect(page).to have_content("Morrison")
   end
 end
+
+describe("the view project path", {:type => :feature}) do
+  it("views details of single project") do
+    visit("/")
+    fill_in("project_name", :with => "Morrison")
+    click_button("Add Project")
+    click_on("Morrison")
+    expect(page).to have_content("Add a new volunteer:")
+  end
+end
+
+describe("the update project path", {:type => :feature}) do
+  it("update details of single project") do
+    visit("/")
+    visit("/")
+    fill_in("project_name", :with => "Morrison")
+    click_button("Add Project")
+    click_on("Morrison")
+    fill_in("project_name", :with => "Lents")
+    click_button("Update Project")
+    expect(page).to have_content("Lents")
+  end
+end

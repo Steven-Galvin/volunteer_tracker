@@ -12,14 +12,15 @@ class Project
     projects = []
     returned_projects.each() do |project|
       name = project.fetch("name")
+      description = project.fetch("description")
       id = project.fetch("id").to_i()
-      projects.push(Project.new({:name => name, :id => id}))
+      projects.push(Project.new({:name => name, :description => description, :id => id}))
     end
     projects
   end
 
   def save
-    result = DB.exec("INSERT INTO projects (name) VALUES ('#{@name}') RETURNING id;")
+    result = DB.exec("INSERT INTO projects (name, description) VALUES ('#{@name}', '#{@description}') RETURNING id;")
     @id = result.first["id"].to_i
   end
 
