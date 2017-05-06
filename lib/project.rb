@@ -28,11 +28,9 @@ class Project
   end
 
   def self.find(id)
-    Project.all.each do |project|
-      if project.id == id
-        return project
-      end
-    end
+    result = DB.exec("SELECT * FROM projects WHERE id = #{id};")
+    name = result.first().fetch("name")
+    Project.new({:name => name, :id => id})
   end
 
   def update (attributes)

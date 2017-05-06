@@ -23,11 +23,9 @@ class Volunteer
   end
 
   def self.find(id)
-    Volunteer.all.each do |volunteer|
-      if volunteer.id == id
-        return volunteer
-      end
-    end
+    result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
+    name = result.first().fetch("name")
+    Volunteer.new({:name => name, :id => id})
   end
 
   def save
