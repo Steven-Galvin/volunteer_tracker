@@ -50,3 +50,28 @@ delete("/project/:id") do
   @projects = Project.all()
   erb(:index)
 end
+
+
+get("/volunteers") do
+  @volunteers = Volunteer.all
+  erb(:volunteers)
+end
+
+get("/volunteer/:id") do
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  erb(:volunteer)
+end
+
+patch("/volunteer/:id") do
+  name = params.fetch('volunteer_name')
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  @volunteer.update({:name => name})
+  erb(:volunteer)
+end
+
+delete("/volunteer/:id") do
+  @volunteer = Volunteer.find(params.fetch("id").to_i)
+  @volunteer.delete()
+  @projects = Project.all
+  erb(:index)
+end

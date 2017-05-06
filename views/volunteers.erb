@@ -4,12 +4,12 @@
 
   <ul>
     <% @volunteers.each do |volunteer| %>
-      <li><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+      <li><a href="/volunteer/<%= volunteer.id %>"><%= volunteer.name %></a></li>
     <% end %>
   </ul>
 
 <% else %>
 
-  <p>There are no volunteers yet!</p>
+  <p>There are no volunteers yet, go <a href="/">back</a> and add a volunteer to a project!</p>
 
 <% end %>

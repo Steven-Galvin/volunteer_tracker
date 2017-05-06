@@ -20,7 +20,7 @@ You will also need to create a database using SQL using these steps:
 * In a new terminal tab run 'psql'
 * In PSQL, type CREATE DATABASE volunteer_tracker;
 * then, type \c volunteer_tracker to navigate into the database;
-* then, type CREATE TABLE volunteers (id serial PRIMARY KEY, first_name varchar, last_name varchar, project_id int);
+* then, type CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar, project_id int);
 * then, type CREATE TABLE projects (id serial PRIMARY KEY, name varchar, description varchar);
 * then, type CREATE DATABASE volunteer_tracker_test WITH TEMPLATE volunteer_tracker;
 
@@ -42,7 +42,6 @@ You will also need to create a database using SQL using these steps:
 |----------|
 |User can add a project with a description|
 |User can edit or delete projects|
-|User can add volunteers with first and last names|
 |User can add volunteers to projects|
 |User can edit or remove volunteers|
 

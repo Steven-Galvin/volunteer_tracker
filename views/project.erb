@@ -17,32 +17,38 @@
 <% end %>
 
 <hr>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Add a new volunteer:</h3>
 
-<h3>Add a new volunteer:</h3>
+    <form action="/project/<%= @project.id %>" method="post">
+      <input id="project_id" name="project_id" type="hidden" value="<%= @project.id %>">
+      <label for="volunteer_name">Volunteer name:</label>
+      <input id="volunteer_name" name="volunteer_name" type="text" required>
 
-<form action="/project/<%= @project.id %>" method="post">
-  <input id="project_id" name="project_id" type="hidden" value="<%= @project.id %>">
-  <label for="volunteer_name">Volunteer name:</label>
-  <input id="volunteer_name" name="volunteer_name" type="text" required>
+      <button type="submit" class="btn btn-success">Add Volunteer</button>
+    </form>
+  </div>
 
-  <button type="submit" class="btn btn-success">Add volunteer</button>
-</form>
+  <div class="col-md-6">
+    <h3>Update: <%= @project.name %></h3>
 
+    <form action="/project/<%= @project.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <label for="project_name">New project name:</label>
+      <input id="project_name" name="project_name" type="text" required>
 
-<h3>Update: <%= @project.name %></h3>
-
-<form action="/project/<%= @project.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <label for="project_name">New project name:</label>
-  <input id="project_name" name="project_name" type="text" required>
-
-  <button type="submit" class="btn btn-success">Update Project</button>
-</form>
+      <button type="submit" class="btn btn-success">Update Project</button>
+    </form>
+  </div>
+</div>
 
 <h3>Delete: <%= @project.name %></h3>
+<h5>WARNING: THIS WILL DELETE ANY VOLUNTEERS ASSOCIATED WITH THIS PROJECT. DELETE AT YOUR OWN RISK.</h5>
+
 
 <form action="/project/<%= @project.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
 
-  <button type="submit" class="btn btn-success">Delete Project</button>
+  <button type="submit" class="btn btn-danger">Delete Project</button>
 </form>
